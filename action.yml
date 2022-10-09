@@ -1,0 +1,23 @@
+name: "Setup buildifier"
+description: "Sets up the buildifier"
+
+branding:
+  icon: "check-square"
+  color: "green"
+
+inputs:
+  buildifier-version:
+    description: "Buildifier version"
+    required: false
+    default: "5.1.0"
+  token:
+    description: Used to query buildifier releases.
+    default: ${{ github.token }}
+
+outputs:
+  success:
+    description: "Status of the buildifier check"
+
+runs:
+  using: "node16"
+  main: "index.js"
