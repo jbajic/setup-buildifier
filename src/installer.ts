@@ -97,7 +97,6 @@ async function findMatch(
     }
   });
 
-  // get the latest version that matches the version spec
   let version: string = evaluateVersions(
     Array.from(versions.keys()),
     versionSpec
@@ -114,7 +113,6 @@ async function getVersionsFromDist(token: string): Promise<IBuildifierVersion[]>
   return response || [];
 }
 
-// Copied from @actions/tool-cache.
 function evaluateVersions(versions: string[], versionSpec: string): string {
   let version = '';
   core.debug(`evaluating ${versions.length} versions`);
