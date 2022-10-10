@@ -1,6 +1,7 @@
 import * as cache from "@actions/cache";
 import * as core from "@actions/core";
 import * as installer from "./installer";
+
 const cachedir = require("cachedir");
 
 export async function run() {
