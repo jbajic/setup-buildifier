@@ -1,4 +1,4 @@
-# setup-buildifier
+# setup-buildifier-action
 
 GitHub Action for for setting up Bazel's build tool buildifier for checking and
 formatting Bazel's files format check on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools) checks. This check does not format
