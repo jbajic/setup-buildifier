@@ -24,11 +24,18 @@ jobs:
       - name: Setup repository
         uses: actions/checkout@v3
 
-      - name: setup-buildifier ${{ matrix.buildifier }}
+      - name: Setup-buildifier ${{ matrix.buildifier }}
         uses: ./
         with:
           buildifier-version: ${{ matrix.buildifier }}
 
+      - name: Run test2
+        run: |
+          ls /opt/hostedtoolcache/buildifier/5.0.0/x64
+          echo $PATH
+          buildifier -version
+        shell: bash
+
       - name: Verify buildifier
-        run: tests/verify-buildifier.sh ${{ matrix.buildifier }}
+        run: tests/verify_buildifier.sh ${{ matrix.buildifier }}
         shell: bash

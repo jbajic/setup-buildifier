@@ -2,15 +2,25 @@
   "name": "setup-buildifier",
   "version": "1.0.0",
   "description": "GitHub Action for for running format check on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools) checks. This check does not format the code but does only the verification.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "main": "src/setup-buildifier.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbajic/setup-buildifier-action.git"
   },
   "scripts": {
     "watch": "ncc build src/setup-buildifier.ts --watch --minify",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
     "build": "ncc build src/setup-buildifier.ts --minify"
   },
-  "keywords": [],
+  "keywords": [
+    "buildifier",
+    "bazel",
+    "format",
+    "github",
+    "actions",
+    "workflow"
+  ],
   "author": "Jure Bajic",
   "license": "Apache-2.0",
   "dependencies": {
@@ -18,7 +28,8 @@
     "@actions/core": "^1.10.0",
     "@actions/tool-cache": "^2.0.1",
     "@octokit/rest": "^19.0.4",
-    "node-cache": "^5.1.2"
+    "cachedir": "^2.3.0",
+    "semver": "^7.3.8"
   },
   "devDependencies": {
     "@types/semver": "^7.3.12",

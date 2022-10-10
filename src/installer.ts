@@ -65,7 +65,7 @@ async function cacheBuildifier(
   fs.chmodSync(downloadPath, "755");
   const cachePath: string = await tc.cacheFile(
     downloadPath,
-    "bazel",
+    "buildifier",
     "buildifier",
     info.tag_name
   );
