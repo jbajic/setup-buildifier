@@ -1,0 +1,34 @@
+name: "Verify setup-buildifier-action"
+concurrency:
+  group: ${{ github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  verify-setup-buildifier:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        buildifier: [1.7.4, 1.6, 1]
+    steps:
+      - name: Setup repository
+        uses: actions/checkout@v3
+
+      - name: setup-buildifier ${{ matrix.buildifier }}
+        uses: ./
+        with:
+          buildifier-version: ${{ matrix.buildifier }}
+
+      - name: Verify buildifier
+        run: tests/verify-buildifier.sh ${{ matrix.buildifier }}
+        shell: bash
