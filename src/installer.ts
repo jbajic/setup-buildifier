@@ -1,9 +1,9 @@
-import * as core from '@actions/core';
-import * as semver from 'semver';
-import * as tc from '@actions/tool-cache';
-import * as octokit from '@octokit/rest'
-import fs from 'fs';
-import os from 'os';
+import * as core from "@actions/core";
+import * as semver from "semver";
+import * as tc from "@actions/tool-cache";
+import * as octokit from "@octokit/rest";
+import fs from "fs";
+import os from "os";
 
 export interface IBuildifierAsset {
   name: string;
@@ -19,9 +19,9 @@ export interface IBuildifierVersion {
 
 export async function getBuildifier(
   versionSpec: string,
-  token: string,
+  token: string
 ): Promise<string> {
-  const toolPath: string = tc.find('buildifier', versionSpec);
+  const toolPath: string = tc.find("buildifier", versionSpec);
 
   if (toolPath) {
     core.info(`Found in cache @ ${toolPath}`);
@@ -32,8 +32,8 @@ export async function getBuildifier(
 
   const osPlat: string = os.platform();
   let osFileName: string = `buildifier-${osPlat}-amd64`;
-  if (osPlat == 'win32') {
-    osFileName = 'buildifier-windows-amd64.exe';
+  if (osPlat == "win32") {
+    osFileName = "buildifier-windows-amd64.exe";
   }
 
   const info = await findMatch(versionSpec, osFileName, token);
@@ -51,7 +51,7 @@ async function cacheBuildifier(
   token: string
 ): Promise<string> {
   const downloadPrefix: string =
-    'https://github.com/bazelbuild/buildtools/releases/download';
+    "https://github.com/bazelbuild/buildtools/releases/download";
   const downloadUrl: string = `${downloadPrefix}/${info.tag_name}/${osFileName}`;
   core.info(`Acquiring ${info.tag_name} from ${downloadUrl}`);
   const auth = `token ${token}`;
@@ -61,12 +61,12 @@ async function cacheBuildifier(
     auth
   );
 
-  core.info('Adding to the cache ...');
-  fs.chmodSync(downloadPath, '755');
+  core.info("Adding to the cache ...");
+  fs.chmodSync(downloadPath, "755");
   const cachePath: string = await tc.cacheFile(
     downloadPath,
-    'bazel',
-    'buildifier',
+    "bazel",
+    "buildifier",
     info.tag_name
   );
   core.info(`Successfully cached buildifier to ${cachePath}`);
@@ -104,17 +104,19 @@ async function findMatch(
   return versions.get(version);
 }
 
-async function getVersionsFromDist(token: string): Promise<IBuildifierVersion[]> {
-  const octo = new octokit.Octokit({auth: token});
-  const {data: response} = await octo.repos.listReleases({
-    owner: 'bazelbuild',
-    repo: 'buildtools'
+async function getVersionsFromDist(
+  token: string
+): Promise<IBuildifierVersion[]> {
+  const octo = new octokit.Octokit({ auth: token });
+  const { data: response } = await octo.repos.listReleases({
+    owner: "bazelbuild",
+    repo: "buildtools",
   });
   return response || [];
 }
 
 function evaluateVersions(versions: string[], versionSpec: string): string {
-  let version = '';
+  let version = "";
   core.debug(`evaluating ${versions.length} versions`);
   versions = versions.sort((a, b) => {
     if (semver.gt(a, b)) {
@@ -134,7 +136,7 @@ function evaluateVersions(versions: string[], versionSpec: string): string {
   if (version) {
     core.debug(`matched: ${version}`);
   } else {
-    core.debug('match not found');
+    core.debug("match not found");
   }
 
   return version;
