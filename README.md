@@ -1,8 +1,10 @@
 # setup-buildifier-action
 
+![verify-action.yml](https://github.com/jbajic/setup-buildifier-action/actions/workflows/verify-action.yml/badge.svg?event=schedule)
+
 GitHub Action for for setting up Bazel's build tool buildifier for checking and
-formatting Bazel's files format check on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools) checks. This check does not format
-the code but does only the verification.
+formatting Bazel's files format checks on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools)
+checks. Works on windows, linux and macOS.
 
 Buildifier automatically check all the files that carry one of the Bazel's
 files:
@@ -12,18 +14,14 @@ files:
 
 ## Inputs
 
- - `version` [optional]: The version of used `buildifier`
-    - Default: "5.1"
-    - Supported version: Check out [release page](https://github.com/bazelbuild/buildtools/releases) of `buildifer`
 
-## Outputs
-
-- `success`: Bool tells if the action has succeeded or failed.
+| Name  | Description | Required | Default |
+| --- | --- | --- | --- |
+| version  | The version of the used `buildifier` | `false`| `5.1.0` |
 
 ## Example Usage
 
-To use `setup-buildifier` you can follow presented examples to see how it
-works:
+To use `setup-buildifier` you can follow presented examples to see how it works:
 
 ### Check every file
 ```yml
@@ -31,15 +29,19 @@ name: Bazel files check
 on: [push]
 jobs:
   formatting-check:
-    name: Formatting Check
+    name: Formatting Bazel files check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
     - name: Setup buildifier
-      uses: jbajic/setup-buildifier@1
+      uses: jbajic/setup-buildifier@v1
 
     - name: Run buildifier
       run: |
-        buildifier .
+        buildifier -mode check -r .
 ```
+
+## License
+
+Apache-2.0
