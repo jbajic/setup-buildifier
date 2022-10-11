@@ -1,4 +1,4 @@
-name: "Verify setup-buildifier-action"
+name: "Verify setup-buildifier action"
 concurrency:
   group: ${{ github.head_ref || github.sha }}
   cancel-in-progress: true
@@ -24,7 +24,7 @@ jobs:
       - name: Setup repository
         uses: actions/checkout@v3
 
-      - name: Run setup-buildifier-action ${{ matrix.buildifier }}
+      - name: Run setup-buildifier action ${{ matrix.buildifier }}
         uses: ./
         with:
           buildifier-version: ${{ matrix.buildifier }}
