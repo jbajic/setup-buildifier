@@ -6,8 +6,7 @@ GitHub Action for for setting up Bazel's build tool buildifier for checking and
 formatting Bazel's files format checks on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools)
 checks. Works on windows, linux and macOS.
 
-Buildifier automatically check all the files that carry one of the Bazel's
-files:
+Buildifier automatically checks one of the Bazel's files:
  - `BUILD`
  - `WORKSPACE`
  - `.bzl`
