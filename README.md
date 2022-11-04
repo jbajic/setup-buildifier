@@ -1,6 +1,6 @@
-# setup-buildifier-action
+# setup-buildifier action
 
-![verify-action.yml](https://github.com/jbajic/setup-buildifier-action/actions/workflows/verify-action.yml/badge.svg?event=schedule)
+![verify-action.yml](https://github.com/jbajic/setup-buildifier/actions/workflows/verify-action.yml/badge.svg?event=schedule)
 
 GitHub Action for setting up Bazel's build tool buildifier for checking and
 formatting Bazel's files format checks on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools)
