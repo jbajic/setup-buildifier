@@ -2,7 +2,7 @@
 
 ![verify-action.yml](https://github.com/jbajic/setup-buildifier-action/actions/workflows/verify-action.yml/badge.svg?event=schedule)
 
-GitHub Action for for setting up Bazel's build tool buildifier for checking and
+GitHub Action for setting up Bazel's build tool buildifier for checking and
 formatting Bazel's files format checks on Bazel files using [buildifier](https://github.com/bazelbuild/buildtools)
 checks. Works on windows, linux and macOS.
 
