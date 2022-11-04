@@ -5,7 +5,7 @@
   "main": "src/setup-buildifier.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbajic/setup-buildifier-action.git"
+    "url": "git+https://github.com/jbajic/setup-buildifier.git"
   },
   "scripts": {
     "watch": "ncc build src/setup-buildifier.ts --watch --minify",
