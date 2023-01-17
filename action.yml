@@ -9,7 +9,7 @@ inputs:
   buildifier-version:
     description: "Buildifier version"
     required: false
-    default: "5.1.0"
+    default: "6.0.0"
   token:
     description: Used to query buildifier releases.
     default: ${{ github.token }}
