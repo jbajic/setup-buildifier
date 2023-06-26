@@ -29,7 +29,7 @@
     "@actions/tool-cache": "^2.0.1",
     "@octokit/rest": "^19.0.4",
     "cachedir": "^2.3.0",
-    "semver": "^7.3.8"
+    "semver": "^7.5.2"
   },
   "devDependencies": {
     "@types/semver": "^7.3.12",
