@@ -16,7 +16,7 @@ Buildifier automatically checks one of the Bazel's files:
 
 | Name  | Description | Required | Default |
 | --- | --- | --- | --- |
-| version  | The version of the used `buildifier` | `false`| `6.0.0` |
+| version  | The version of the used `buildifier` | `false`| `6.1.2` |
 
 ## Example Usage
 
